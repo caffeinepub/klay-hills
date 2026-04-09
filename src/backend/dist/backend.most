@@ -1,0 +1,69 @@
+// Version: 3.0.0
+type BookingId__572944220 = Nat;
+type Booking__753903109 =
+  {
+    advanceReceived : Nat;
+    balanceReceivable : Int;
+    bookingDate : Timestamp__301639476;
+    createdAt : Timestamp__301639476;
+    customerName : Text;
+    discount : Nat;
+    functionDate : Timestamp__301639476;
+    hall : Hall__510425524;
+    id : BookingId__572944220;
+    remarks : Text;
+    rentAmount : Nat;
+    settlementAmount : Nat;
+    timeOfDay : TimeOfDay__873018767;
+    totalBankReceipt : Nat;
+    totalCashReceipt : Nat;
+    updatedAt : Timestamp__301639476
+  };
+type Hall__510425524 =
+  {#businessHall; #frenchHall; #others; #terra; #tileFactory};
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type OldAdminCredentials__936712928 =
+  {var passwordHash : Text; var username : Text};
+type OldBooking__221110599 =
+  {
+    advanceReceived : Nat;
+    balanceReceivable : Int;
+    bookingDate : Int;
+    createdAt : Int;
+    customerName : Text;
+    discount : Nat;
+    functionDate : Int;
+    id : Nat;
+    remarks : Text;
+    rentAmount : Nat;
+    settlementAmount : Nat;
+    timeOfDay : OldTimeOfDay__253071960;
+    totalBankReceipt : Nat;
+    totalCashReceipt : Nat;
+    updatedAt : Int
+  };
+type OldTimeOfDay__253071960 = {#day; #evening};
+type TimeOfDay__873018767 = {#day; #evening};
+type Timestamp__301639476 = Int;
+actor ({
+  in adminCredentials : OldAdminCredentials__936712928;
+  in bookings : List__415060402<OldBooking__221110599>;
+  in var nextBookingId : Nat
+}, {
+  stable adminCredentials : {var passwordHash : Text; var username : Text};
+  stable bookingCounter : {var id : Nat};
+  stable bookings :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Booking__753903109]];
+      var elementIndex : Nat__490723111
+    }
+}) ;

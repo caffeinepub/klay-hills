@@ -1,0 +1,24 @@
+{
+  "overview": "KLAY HILLS is a convention centre management system for tracking bookings, fees, and generating pending balance reports with dashboard analytics.",
+  "features": [
+    "Booking management with add, edit, delete",
+    "Auto-calculated Balance Receivable",
+    "Pending Fee Report with red highlights",
+    "Dashboard with cash, bank, and pending totals",
+    "Monthly summary report",
+    "Bulk Excel import and export",
+    "Simple admin login with username/password",
+    "Mobile-friendly responsive design",
+    "Day/Evening booking time separation",
+    "Customer name search and filtering"
+  ],
+  "category": "productivity",
+  "tags": [
+    "convention-centre",
+    "booking-management",
+    "fee-tracking",
+    "reports",
+    "excel-export"
+  ],
+  "last_updated": "2026-04-09T09:54:12.204Z"
+}

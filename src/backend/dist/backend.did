@@ -1,0 +1,86 @@
+type Timestamp = int;
+type TimeOfDay = 
+ variant {
+   day;
+   evening;
+ };
+type MonthlySummary = 
+ record {
+   month: nat;
+   totalAdvanceReceived: nat;
+   totalBankReceipt: nat;
+   totalBookings: nat;
+   totalCashReceipt: nat;
+   totalDiscount: nat;
+   totalPendingAmount: int;
+   totalRentAmount: nat;
+   totalSettlementAmount: nat;
+   year: nat;
+ };
+type Hall = 
+ variant {
+   businessHall;
+   frenchHall;
+   others;
+   terra;
+   tileFactory;
+ };
+type DashboardStats = 
+ record {
+   pendingBookingsCount: nat;
+   totalBankReceipt: nat;
+   totalBookings: nat;
+   totalCashReceipt: nat;
+   totalPendingAmount: int;
+ };
+type BookingInput = 
+ record {
+   advanceReceived: nat;
+   bookingDate: Timestamp;
+   customerName: text;
+   discount: nat;
+   functionDate: Timestamp;
+   hall: Hall;
+   remarks: text;
+   rentAmount: nat;
+   settlementAmount: nat;
+   timeOfDay: TimeOfDay;
+   totalBankReceipt: nat;
+   totalCashReceipt: nat;
+ };
+type BookingId = nat;
+type Booking = 
+ record {
+   advanceReceived: nat;
+   balanceReceivable: int;
+   bookingDate: Timestamp;
+   createdAt: Timestamp;
+   customerName: text;
+   discount: nat;
+   functionDate: Timestamp;
+   hall: Hall;
+   id: BookingId;
+   remarks: text;
+   rentAmount: nat;
+   settlementAmount: nat;
+   timeOfDay: TimeOfDay;
+   totalBankReceipt: nat;
+   totalCashReceipt: nat;
+   updatedAt: Timestamp;
+ };
+service : {
+  createBooking: (input: BookingInput) -> (Booking);
+  deleteBooking: (id: BookingId) -> (bool);
+  getAllBookings: () -> (vec Booking) query;
+  getBooking: (id: BookingId) -> (opt Booking) query;
+  getBookingsByCustomer: (name: text) -> (vec Booking) query;
+  getBookingsByDateRange: (startDate: Timestamp, endDate: Timestamp) ->
+   (vec Booking) query;
+  getDashboardStats: () -> (DashboardStats) query;
+  getMonthlySummary: (year: nat, month: nat) -> (MonthlySummary) query;
+  getPendingBookings: () -> (vec Booking) query;
+  updateAdminCredentials: (currentPassword: text, newUsername: text,
+   newPassword: text) -> (bool);
+  updateBooking: (id: BookingId, input: BookingInput) -> (bool);
+  verifyAdmin: (username: text, password: text) -> (bool);
+}
